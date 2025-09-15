@@ -6,7 +6,7 @@ const savedc = localStorage.getItem('dbugc');
 const menuBtns = document.querySelectorAll('.menu-btn');
 const psBtns = document.querySelectorAll('.ps-btn');
 const plsbtn = document.querySelectorAll('.button-container button');
-const consoleDev = document.getElementById("consoleLOG");
+const consoleDev = document.getElementById("console");
 
 
 var ps4fw
@@ -44,7 +44,7 @@ document.getElementById('update-exploit').addEventListener('click', () => {
   fetch('/update_exploit', { method: 'POST' })
     .then(res => res.json())
     .then(data => {
-      document.getElementById('consoleLOG').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
+      document.getElementById('console').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
     })
     .catch(err => {
       alert('Error: ' + err + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
@@ -77,7 +77,7 @@ async function loadMultipleModules(files) {
     const modules = await Promise.all(files.map(file => import(file)));
     return modules; // array of imported modules
   } catch (error) {
-    consoleLOG.error("Error loading modules:", error);
+    console.error("Error loading modules:", error);
     throw error;
   }
 }
@@ -257,7 +257,7 @@ function checksettings() {
       });
     });
 
-    document.getElementById('consoleLOG').style.borderColor = '#00F0FF';
+    document.getElementById('console').style.borderColor = '#00F0FF';
     document.getElementById('header-title').style.borderColor = '#00F0FF';
     document.getElementById('header-title').style.textShadow = '0px 0px 15px #00F0FF';
     
@@ -295,7 +295,7 @@ function checksettings() {
       });
     });
 
-    document.getElementById('consoleLOG').style.borderColor = '#FFB84D';
+    document.getElementById('console').style.borderColor = '#FFB84D';
     document.getElementById('header-title').style.borderColor = '#FFB84D';
     document.getElementById('header-title').style.textShadow = '0px 0px 15px #FFB84D';
     document.getElementById('button-container').style.borderColor = '#FFB84D';
@@ -437,31 +437,31 @@ async function jailbreak() {
         '../payloads/Jailbreak.js',
         '../psfree/alert.mjs'
       ]);
-      consoleLOG.log("All modules are loaded!");
+      console.log("All modules are loaded!");
       const JailbreakModule = modules[0];
 
       if (localStorage.getItem('HEN')) {
         if (JailbreakModule && typeof JailbreakModule.HEN === 'function') {
             JailbreakModule.HEN();
         } else {
-            consoleLOG.error("HEN function not found in Jailbreak.js module");
+            console.error("HEN function not found in Jailbreak.js module");
         }
       } else if (localStorage.getItem('GoldHEN')) {
         if (JailbreakModule && typeof JailbreakModule.GoldHEN === 'function') {
             JailbreakModule.GoldHEN();
         } else {
-            consoleLOG.error("GoldHEN function not found in Jailbreak.js module");
+            console.error("GoldHEN function not found in Jailbreak.js module");
         }
       } else {
         if (JailbreakModule && typeof JailbreakModule.GoldHEN === 'function') {
             JailbreakModule.GoldHEN();
         } else {
-            consoleLOG.error("GoldHEN function not found in Jailbreak.js module");
+            console.error("GoldHEN function not found in Jailbreak.js module");
         }
       }
     }
   } catch (e) {
-    consoleLOG.error("Failed to jailbreak:", e);
+    console.error("Failed to jailbreak:", e);
   }
 }
 
@@ -471,16 +471,16 @@ async function binloader() {
     const modules = await loadMultipleModules([
       '../psfree/alert.mjs'
     ]);
-    consoleLOG.log("All modules are loaded!");
+    console.log("All modules are loaded!");
 
     const goldhenModule = modules[0];
     if (goldhenModule && typeof goldhenModule.runBinLoader === 'function') {
       goldhenModule.runBinLoader();
     } else {
-      consoleLOG.error("GoldHEN function not found in GoldHEN.js module");
+      console.error("GoldHEN function not found in GoldHEN.js module");
     }
   } catch (e) {
-    consoleLOG.error("Failed to jailbreak:", e);
+    console.error("Failed to jailbreak:", e);
   }
 }
 
@@ -493,22 +493,22 @@ async function Loadpayloads(payload) {
         '../payloads/payloads.js',
         '../psfree/alert.mjs'
       ]);
-      consoleLOG.log("All modules are loaded!");
+      console.log("All modules are loaded!");
     } else {
       modules = await loadMultipleModules([
         '../payloads/payloads.js'
       ]);
-      consoleLOG.log("All modules are loaded!");
+      console.log("All modules are loaded!");
     }
 
     const payloadModule = modules[0];
     if (payloadModule && typeof payloadModule[payload] === 'function') {
       payloadModule[payload]();
     } else {
-      consoleLOG.error(`${payload} function not found in payloads.js module`);
+      console.error(`${payload} function not found in payloads.js module`);
     }
   } catch (e) {
-    consoleLOG.error(`Failed to load ${payload}:`, e);
+    console.error(`Failed to load ${payload}:`, e);
   }
 }
 
@@ -521,9 +521,9 @@ function loadsettings() {
 
 function onCheckboxChange(checked) {
   if (checked) {
-    consoleLOG.log('Checkbox is checked!');
+    console.log('Checkbox is checked!');
   } else {
-    consoleLOG.log('Checkbox is unchecked!');
+    console.log('Checkbox is unchecked!');
   }
 }
 
@@ -546,7 +546,7 @@ function updateProgress() {
     interval = null;
     if (text) text.innerText = "جاهز ✔";
     setTimeout(() => {
-      const consoleEl = document.querySelector('.consoleLOG');
+      const consoleEl = document.querySelector('.console');
       if (consoleEl) consoleEl.style.display = "none";
       // if you intended to hide progressBox/bar you can do:
       // const pb = document.getElementById('progressBox');

@@ -203,7 +203,7 @@ html, body {
 
 /* Console */
 /* ====== Console (احتفظنا بكل ستايلاتك الأصلية مع تعديل بسيط للـ z-index) ====== */
-#consoleLOG {
+#console {
   color: #FFF;
   background-color: #6f707433;
   border-radius: 18px;
@@ -227,7 +227,7 @@ html, body {
 
 
 /* السطور/المدخلات داخل الكونسول (تأكد أنها فوق watermark) */
-#consoleLOG .log-entry {
+#console .log-entry {
   color: #FFF;
   font-size: 14px;           /* حجم رسائل اللوق (تقدر تغيّره) */
   line-height: 1.2;
