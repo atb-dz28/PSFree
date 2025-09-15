@@ -31,7 +31,7 @@ html, body {
   text-shadow: 0 0 8px #0ff;
 }
 
-#ConsoleBox .console {
+#ConsoleBox .consoleprog {
   background: #000;
   padding: 15px;
   border-radius: 8px;
@@ -223,6 +223,7 @@ html, body {
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
+   white-space: pre-wrap;
 }
 
 
@@ -232,6 +233,7 @@ html, body {
   font-size: 14px;           /* حجم رسائل اللوق (تقدر تغيّره) */
   line-height: 1.2;
   z-index: 3;
+   white-space: pre-wrap;
 }
 #consoleWatermark {
   position: fixed;           /* ثابت بالنسبة للنافذة */
