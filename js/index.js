@@ -6,7 +6,7 @@ const savedc = localStorage.getItem('dbugc');
 const menuBtns = document.querySelectorAll('.menu-btn');
 const psBtns = document.querySelectorAll('.ps-btn');
 const plsbtn = document.querySelectorAll('.button-container button');
-const consoleDev = document.getElementById("console");
+const consoleDev = document.getElementById("consoleLOG");
 
 
 var ps4fw
@@ -44,7 +44,7 @@ document.getElementById('update-exploit').addEventListener('click', () => {
   fetch('/update_exploit', { method: 'POST' })
     .then(res => res.json())
     .then(data => {
-      document.getElementById('console').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
+      document.getElementById('consoleLOG').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
     })
     .catch(err => {
       alert('Error: ' + err + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
@@ -257,7 +257,7 @@ function checksettings() {
       });
     });
 
-    document.getElementById('console').style.borderColor = '#00F0FF';
+    document.getElementById('consoleLOG').style.borderColor = '#00F0FF';
     document.getElementById('header-title').style.borderColor = '#00F0FF';
     document.getElementById('header-title').style.textShadow = '0px 0px 15px #00F0FF';
     
@@ -295,7 +295,7 @@ function checksettings() {
       });
     });
 
-    document.getElementById('console').style.borderColor = '#FFB84D';
+    document.getElementById('consoleLOG').style.borderColor = '#FFB84D';
     document.getElementById('header-title').style.borderColor = '#FFB84D';
     document.getElementById('header-title').style.textShadow = '0px 0px 15px #FFB84D';
     document.getElementById('button-container').style.borderColor = '#FFB84D';
