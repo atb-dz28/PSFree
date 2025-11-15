@@ -433,7 +433,7 @@ async function jailbreak() {
       consoleDev.scrollTop = consoleDev.scrollHeight;
     } else {
       document.getElementById('jailbreak').style.display = 'none';
-	  document.getElementById('ConsoleBox').style.display = 'true';
+	  document.getElementById('ConsoleBox').style.display = 'block';
       const modules = await loadMultipleModules([
         '../payloads/Jailbreak.js',
         '../psfree/alert.mjs'
